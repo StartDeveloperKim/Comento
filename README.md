@@ -1,8 +1,9 @@
 # Comento
 코멘토 직무 부트캠프
-"인텔리제이로 실행했습니다."
-## 1. 품질데이터 관리 운영
 
+## 1. 스프링의 개발환경 구축
+  - 스프링 환경설정(완료)
+    - 인텔리제이환경에서 실행했습니다.
 ## 2. 개발환경 셋팅
 - JDK 설치
 
@@ -16,7 +17,7 @@
 
 ![image](https://user-images.githubusercontent.com/97887047/212029158-f67b7cf9-2889-49fc-a945-154f0f891c48.png)
 
-- MYSQL
+- MYSQL workbench 설치 및 샘플 DB 구축
 
 ![image](https://user-images.githubusercontent.com/97887047/211979933-568e5ebe-8371-48be-9dab-d8d50941dfbf.png)
 
