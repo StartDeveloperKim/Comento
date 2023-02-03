@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages = "java.commento.demo.dao")
+@MapperScan(value = "commento.demo.dao")
 public class MyBatisConfig {
 
     @Bean
@@ -18,8 +18,7 @@ public class MyBatisConfig {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
 
         sqlSessionFactory.setDataSource(dataSource);
-        sqlSessionFactory.setTypeAliasesPackage("java.commento.demo.dao");
-
+        sqlSessionFactory.setTypeAliasesPackage("java.commento.demo.dto");
         return sqlSessionFactory.getObject();
     }
 
