@@ -1,39 +1,41 @@
 package commento.demo.service;
 
+import commento.demo.dao.RequestCode;
 import commento.demo.dao.StatisticMapper;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class StatisticServiceImpl implements StatisticService{
 
     private final StatisticMapper statisticMapper;
 
-    @Autowired
-    public StatisticServiceImpl(StatisticMapper statisticMapper) {
-        this.statisticMapper = statisticMapper;
+
+    @Override
+    public Long getMonthAccessor(String date) {
+        return statisticMapper.countMonthAccessor(date, RequestCode.ACCESS.getCode());
     }
 
     @Override
-    public HashMap<String, Object> yearLoginNum(Long year) {
-        HashMap<String, Object> retVal = new HashMap<>();
+    public Long getDayAccessor(String date) {
+        return statisticMapper.countDayAccessor(date, RequestCode.LOGIN.getCode());
+    }
 
-        try {
-            retVal = statisticMapper.selectYearLogin(year);
-            retVal.put("year", year);
-            retVal.put("is_success", true);
-        } catch (Exception e) {
-            log.error("에러 발생", e.getMessage());
-            e.printStackTrace();
-            retVal.put("totCnt", -999);
-            retVal.put("year", year);
-            retVal.put("is_success", false);
-        }
+    @Override
+    public Long getAvgDayLoginUser() {
+        return statisticMapper.countAvgDayLoginUser(RequestCode.LOGIN.getCode());
+    }
 
-        return retVal;
+    @Override
+    public Long getLoginUserExceptHoliday(String date) {
+        return statisticMapper.countLoginUserExceptHoliday(date);
+    }
+
+    @Override
+    public Long getMonthLoginUserDepartment(Long departmentId, String date) {
+        return statisticMapper.countMonthLoginUserByDepartment(departmentId, date);
     }
 }

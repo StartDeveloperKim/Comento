@@ -1,8 +1,14 @@
 package commento.demo.service;
 
-import java.util.HashMap;
-
 public interface StatisticService {
-    HashMap<String, Object> yearLoginNum(Long year);
+
+    Long getMonthAccessor(String date);
+    Long getDayAccessor(String date);
+
+    Long getAvgDayLoginUser();
+
+    Long getLoginUserExceptHoliday(String date);
+
+    Long getMonthLoginUserDepartment(Long departmentId, String date);
 
 }
